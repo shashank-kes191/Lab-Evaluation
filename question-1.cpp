@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void getCofactor(vector<vector<int>>& mat, vector<vector<int>>& temp, int p, int q, int n) {
+void cofact(vector<vector<int>>& mat, vector<vector<int>>& temp, int p, int q, int n) {
     int i = 0, j = 0;
     for (int row = 0; row < n; row++) {
         for (int col = 0; col < n; col++) {
@@ -21,17 +21,17 @@ int det(vector<vector<int>>& mat, int n) {
         return mat[0][0];
     }
 
-    int det = 0;
+    int dete = 0;
     vector<vector<int>> temp(n, vector<int>(n));
     int sign = 1;
 
     for (int f = 0; f < n; f++) {
-        getCofactor(mat, temp, 0, f, n);
-        det += sign * mat[0][f] * det(temp, n - 1);
+        cofact(mat, temp, 0, f, n);
+        dete += sign * mat[0][f] * det(temp, n - 1);
         sign = -sign;
     }
 
-    return det;
+    return dete;
 }
 
 int main() {
@@ -55,8 +55,8 @@ int main() {
         cout << endl;
     }
 
-    int det = det(mat, n);
-    cout << "Determinant of the matrix is: " << det << endl;
+    int dete = det(mat, n);
+    cout << "Determinant of the matrix is: " << dete << endl;
 
     return 0;
 }
